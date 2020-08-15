@@ -1,13 +1,16 @@
 require 'ruby2d'
+require_relative 'graphics/settings'
+require_relative 'graphics/pyramid_drawer'
 
-# Set the window size
-set width: 300, height: 200
+Graphics::Settings.set(window_width: 350.0, window_height: 700.0)
 
-# Create a new shape
-s = Square.new
+Window.set(
+  width: Graphics::Settings.window_width,
+  height: Graphics::Settings.window_height,
+  title: 'Domino Pyramid',
+  diagnostics: true
+)
 
-# Give it some color
-s.color = 'red'
+Graphics::PyramidDrawer.run
 
-# Show the window
-show
+Window.show
