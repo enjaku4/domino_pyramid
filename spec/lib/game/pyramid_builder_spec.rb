@@ -12,7 +12,7 @@ describe Game::PyramidBuilder do
       expect(subject.rows.count).to eq(7)
     end
 
-    it 'returns a pyramid with proper number of bones in each row' do
+    it 'returns a pyramid with the right number of bones in each row' do
       subject.rows.each do |row|
         expect(row.bones.count).to eq(row.number)
       end
