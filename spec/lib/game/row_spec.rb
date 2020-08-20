@@ -1,5 +1,3 @@
-require_relative '../../../lib/game/row'
-
 describe Game::Row do
   describe '#<<' do
     let(:row) { described_class.new(3) }

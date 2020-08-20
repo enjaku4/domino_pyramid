@@ -1,7 +1,3 @@
-require_relative 'bone'
-require_relative 'pyramid'
-require_relative 'row'
-
 module Game
   module PyramidBuilder
     DOMINOES = (0..6).each_with_object([]) do |first_value, dominoes|

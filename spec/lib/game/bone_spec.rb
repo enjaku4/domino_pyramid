@@ -1,5 +1,3 @@
-require_relative '../../../lib/game/bone'
-
 describe Game::Bone do
   let(:bone) { described_class.new(0, 3) }
 

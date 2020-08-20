@@ -1,5 +1,3 @@
-require_relative 'hole'
-
 module Graphics
   class Tile
     def initialize(value, x:, y:)

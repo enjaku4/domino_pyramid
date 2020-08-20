@@ -1,5 +1,3 @@
-require_relative '../../../lib/game/pyramid'
-
 describe Game::Pyramid do
   describe '#<<' do
     let(:pyramid) { described_class.new }

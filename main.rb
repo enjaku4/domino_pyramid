@@ -1,6 +1,6 @@
 require 'ruby2d'
-require_relative 'graphics/settings'
-require_relative 'graphics/pyramid_drawer'
+
+Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].each { |f| load(f) }
 
 Graphics::Settings.set(window_width: 350.0, window_height: 700.0)
 

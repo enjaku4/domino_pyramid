@@ -1,5 +1,3 @@
-require_relative 'tile'
-
 module Graphics
   class Bone
     def initialize(bone, x:, y:)

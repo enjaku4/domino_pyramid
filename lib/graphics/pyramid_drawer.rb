@@ -1,6 +1,3 @@
-require_relative 'bone'
-require_relative '../game/pyramid_builder'
-
 module Graphics
   module PyramidDrawer
     extend self

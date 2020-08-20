@@ -1,5 +1,3 @@
-require_relative '../../../lib/game/pyramid_builder'
-
 describe Game::PyramidBuilder do
   describe '.run' do
     subject { described_class.run }
