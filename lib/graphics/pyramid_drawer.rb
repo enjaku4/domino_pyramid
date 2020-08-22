@@ -3,13 +3,13 @@ module Graphics
     extend self
 
     def run
-      Game::PyramidBuilder.run.rows.each do |row|
+      Game::Pyramid.rows.each do |row|
         y = initial_y(row)
         x = initial_x(row)
 
         row.bones.each do |bone|
           bone.reveal if [1,7].include?(row.number)
-          Bone.new(bone, x: x, y: y).draw
+          BoneDrawer.new(bone, x, y).draw
 
           x += Settings.bone_width
         end

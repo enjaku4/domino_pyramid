@@ -12,4 +12,10 @@ describe Game::Bone do
       expect { bone.reveal }.to change { bone.revealed? }.from(false).to(true)
     end
   end
+
+  describe '#revealed?' do
+    it "returns \'revealed\' attribute" do
+      expect(bone.revealed?).to eq(false)
+    end
+  end
 end

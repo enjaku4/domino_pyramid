@@ -11,6 +11,7 @@ Window.set(
   diagnostics: true
 )
 
+Game::PyramidBuilder.run
 Graphics::PyramidDrawer.run
 
 Window.show

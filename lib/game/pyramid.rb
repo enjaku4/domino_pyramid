@@ -1,13 +1,17 @@
 module Game
-  class Pyramid
-    attr_reader :rows
+  module Pyramid
+    extend self
 
-    def initialize
-      @rows = []
+    def rows
+      @@rows ||= []
     end
 
     def <<(row)
-      @rows << row
+      rows << row
+    end
+
+    def clear!
+      @@rows = []
     end
   end
 end

@@ -23,7 +23,7 @@ module Graphics
         set_bone_width
         set_bone_height
         set_separator_size
-        set_hole_radius
+        set_spot_radius
       end
 
       def set_bone_width
@@ -38,8 +38,8 @@ module Graphics
         data[:separator_size] = bone_height / 34
       end
 
-      def set_hole_radius
-        data[:hole_radius] = bone_height / 25
+      def set_spot_radius
+        data[:spot_radius] = bone_height / 25
       end
   end
 end

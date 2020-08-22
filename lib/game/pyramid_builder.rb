@@ -7,7 +7,7 @@ module Game
     def self.run
       dominoes = DOMINOES.shuffle
 
-      (1..7).each_with_object(Pyramid.new) do |row_number, pyramid|
+      (1..7).each_with_object(Pyramid) do |row_number, pyramid|
         row = Row.new(row_number)
         row_number.times { row << dominoes.pop }
         pyramid << row
