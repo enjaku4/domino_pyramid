@@ -6,37 +6,42 @@ module Graphics
       @y = y
     end
 
-    def draw
-      draw_background
-      draw_borders
-
+    def run
       if @bone.revealed?
         draw_tiles
         draw_separator
+        create_clickable_area
+      else
+        draw_dark_side
       end
+
+      draw_borders
     end
 
     private
 
-      def draw_background
-        color = @bone.revealed? ? 'aqua' : 'gray'
-        Rectangle.new(x: left, y: top, width: Settings.bone_width, height: Settings.bone_height, color: color, z: 1)
+      def create_clickable_area
+        ClickableArea.new(@bone, @x, @y).store
+      end
+
+      def draw_dark_side
+        Rectangle.new(x: @x, y: @y, width: Store::Settings.bone_width, height: Store::Settings.bone_height, color: 'gray', z: 1)
       end
 
       def draw_tiles
-        TileDrawer.new(@bone.first_value, left, top).draw
-        TileDrawer.new(@bone.second_value, left, middle_y).draw
+        TileDrawer.new(@bone.first_value, left, top).run
+        TileDrawer.new(@bone.second_value, left, middle_y).run
       end
 
       def draw_separator
-        Line.new(x1: left, y1: middle_y, x2: right, y2: middle_y, width: Settings.separator_size, color: 'navy', z: 2)
+        Line.new(x1: left, y1: middle_y, x2: right, y2: middle_y, width: Store::Settings.separator_size, color: 'navy', z: 2)
       end
 
       def draw_borders
-        Line.new(x1: left, y1: top, x2: right, y2: top, width: 1, color: 'navy', z: 2)
-        Line.new(x1: left, y1: bottom, x2: right, y2: bottom, width: 1, color: 'navy', z: 2)
-        Line.new(x1: left, y1: top, x2: left, y2: bottom, width: 1, color: 'navy', z: 2)
-        Line.new(x1: right, y1: top, x2: right, y2: bottom, width: 1, color: 'navy', z: 2)
+        Line.new(x1: left, y1: top, x2: right, y2: top, width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
+        Line.new(x1: left, y1: bottom, x2: right, y2: bottom, width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
+        Line.new(x1: left, y1: top, x2: left, y2: bottom, width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
+        Line.new(x1: right, y1: top, x2: right, y2: bottom, width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
       end
 
       def left
@@ -44,7 +49,7 @@ module Graphics
       end
 
       def right
-        @x + Settings.bone_width
+        @x + Store::Settings.bone_width
       end
 
       def top
@@ -52,11 +57,11 @@ module Graphics
       end
 
       def bottom
-        @y + Settings.bone_height
+        @y + Store::Settings.bone_height
       end
 
       def middle_y
-        @y + Settings.bone_height / 2
+        @y + Store::Settings.bone_height / 2
       end
   end
 end

@@ -6,7 +6,7 @@ module Graphics
       @y = y
     end
 
-    def draw
+    def run
       case @value
       when 1
         draw_spot(middle_x, middle_y)
@@ -41,31 +41,31 @@ module Graphics
     private
 
       def draw_spot(x, y)
-        Circle.new(x: x, y: y, radius: Settings.spot_radius, color: 'navy', z: 2)
+        Circle.new(x: x, y: y, radius: Store::Settings.spot_radius, color: 'navy', z: 2)
       end
 
       def left
-        @x + Settings.bone_width / 4
+        @x + Store::Settings.bone_width / 4
       end
 
       def right
-        @x + Settings.bone_width / 4 * 3
+        @x + Store::Settings.bone_width / 4 * 3
       end
 
       def middle_x
-        @x + Settings.bone_width / 2
+        @x + Store::Settings.bone_width / 2
       end
 
       def top
-        @y + Settings.bone_height / 8
+        @y + Store::Settings.bone_height / 8
       end
 
       def bottom
-        @y + Settings.bone_height / 8 * 3
+        @y + Store::Settings.bone_height / 8 * 3
       end
 
       def middle_y
-        @y + Settings.bone_height / 4
+        @y + Store::Settings.bone_height / 4
       end
   end
 end

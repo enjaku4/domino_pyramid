@@ -9,9 +9,9 @@ module Graphics
 
         row.bones.each do |bone|
           bone.reveal if [1,7].include?(row.number)
-          BoneDrawer.new(bone, x, y).draw
+          BoneDrawer.new(bone, x, y).run
 
-          x += Settings.bone_width
+          x += Store::Settings.bone_width
         end
       end
     end
@@ -19,11 +19,11 @@ module Graphics
     private
 
       def initial_x(row)
-        Settings.window_width / 2 - Settings.bone_width / 2 * row.number
+        Store::Settings.window_width / 2 - Store::Settings.bone_width / 2 * row.number
       end
 
       def initial_y(row)
-        (row.number - 1) * Settings.bone_height
+        (row.number - 1) * Store::Settings.bone_height
       end
   end
 end

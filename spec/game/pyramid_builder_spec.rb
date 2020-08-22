@@ -2,9 +2,13 @@ describe Game::PyramidBuilder do
   describe '.run' do
     subject { described_class.run }
 
-    let(:pyramid) { Game::Pyramid }
+    let(:pyramid) { Game::Pyramid}
 
-    before { pyramid.clear! }
+    around do |example|
+      pyramid.clear!
+      example.run
+      pyramid.clear!
+    end
 
     it 'builds a pyramid with 7 rows' do
       subject

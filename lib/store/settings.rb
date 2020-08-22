@@ -1,5 +1,5 @@
-module Graphics
-  module Settings
+module Store
+  module Store::Settings
     extend self
 
     def set(window_width:, window_height:)
@@ -24,6 +24,8 @@ module Graphics
         set_bone_height
         set_separator_size
         set_spot_radius
+        set_vertical_border_width
+        set_horizontal_border_width
       end
 
       def set_bone_width
@@ -36,6 +38,14 @@ module Graphics
 
       def set_separator_size
         data[:separator_size] = bone_height / 34
+      end
+
+      def set_vertical_border_width
+        data[:vertical_border_width] = bone_height / 50
+      end
+
+      def set_horizontal_border_width
+        data[:horizontal_border_width] = bone_width / 25
       end
 
       def set_spot_radius
