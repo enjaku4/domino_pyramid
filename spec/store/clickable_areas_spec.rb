@@ -2,7 +2,7 @@ describe Store::ClickableAreas do
   let(:clickable_areas) { described_class.clone }
   let(:clickable_area) { double }
 
-  after { clickable_areas.collection.clear }
+  after { clickable_areas.clear! }
 
   describe '.<<' do
     it 'adds a new clickable area to the colection' do
@@ -35,6 +35,14 @@ describe Store::ClickableAreas do
       it 'returns it' do
         expect(subject).to eq(clickable_area)
       end
+    end
+  end
+
+  describe '.clear!' do
+    before { clickable_areas << clickable_area }
+
+    it 'clears clickable areas' do
+      expect { clickable_areas.clear! }.to change { clickable_areas.collection }.from([clickable_area]).to([])
     end
   end
 end

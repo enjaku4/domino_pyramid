@@ -11,8 +11,12 @@ describe Store::Settings do
     expect(subject.bone_height).to eq(100)
   end
 
-  it 'sets separator size' do
-    expect(subject.separator_size).to eq(2.9411764705882355)
+  it 'sets divider size' do
+    expect(subject.divider_size).to eq(2.9411764705882355)
+  end
+
+  it 'sets spot radius' do
+    expect(subject.spot_radius).to eq(4)
   end
 
   it 'sets vertical border width' do
@@ -21,10 +25,6 @@ describe Store::Settings do
 
   it 'sets horizontal border width' do
     expect(subject.horizontal_border_width).to eq(2)
-  end
-
-  it 'sets spot radius' do
-    expect(subject.spot_radius).to eq(4)
   end
 
   it 'raise an error if there is no such setting' do

@@ -22,7 +22,7 @@ module Store
       def build_graphics_settings
         set_bone_width
         set_bone_height
-        set_separator_size
+        set_divider_size
         set_spot_radius
         set_vertical_border_width
         set_horizontal_border_width
@@ -36,8 +36,12 @@ module Store
         data[:bone_height] = window_height / 7
       end
 
-      def set_separator_size
-        data[:separator_size] = bone_height / 34
+      def set_divider_size
+        data[:divider_size] = bone_height / 34
+      end
+
+      def set_spot_radius
+        data[:spot_radius] = bone_height / 25
       end
 
       def set_vertical_border_width
@@ -46,10 +50,6 @@ module Store
 
       def set_horizontal_border_width
         data[:horizontal_border_width] = bone_width / 25
-      end
-
-      def set_spot_radius
-        data[:spot_radius] = bone_height / 25
       end
   end
 end

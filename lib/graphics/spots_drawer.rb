@@ -1,5 +1,5 @@
 module Graphics
-  class TileDrawer
+  class SpotsDrawer
     def initialize(value, x, y)
       @value = value
       @x = x

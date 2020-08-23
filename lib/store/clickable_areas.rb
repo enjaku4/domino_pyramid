@@ -13,5 +13,9 @@ module Store
     def find_clicked(x, y)
       collection.detect { |area| area.contains?(x, y) }
     end
+
+    def clear!
+      collection.clear
+    end
   end
 end

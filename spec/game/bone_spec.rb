@@ -7,9 +7,9 @@ describe Game::Bone do
     end
   end
 
-  describe '#reveal' do
+  describe '#revea!l' do
     it 'reveals the bone' do
-      expect { bone.reveal }.to change { bone.revealed? }.from(false).to(true)
+      expect { bone.reveal! }.to change { bone.revealed? }.from(false).to(true)
     end
   end
 

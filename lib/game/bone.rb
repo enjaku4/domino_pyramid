@@ -15,7 +15,7 @@ module Game
       @first_value + @second_value
     end
 
-    def reveal
+    def reveal!
       @revealed = true
     end
 

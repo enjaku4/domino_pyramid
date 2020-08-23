@@ -11,7 +11,7 @@ module Game
     end
 
     def clear!
-      @@rows = []
+      rows.clear
     end
   end
 end
