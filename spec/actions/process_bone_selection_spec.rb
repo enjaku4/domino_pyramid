@@ -2,8 +2,6 @@ describe Actions::ProcessBoneSelection do
   describe '.run' do
     subject { described_class.run(double(x: 3, y: 55)) }
 
-    let(:event) { double }
-
     context 'if it is a clickable area' do
       let(:bone) { Game::Bone.new(2, 3) }
 

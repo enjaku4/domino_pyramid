@@ -2,7 +2,7 @@ describe Game::PyramidBuilder do
   describe '.run' do
     subject { described_class.run }
 
-    let(:pyramid) { Game::Pyramid}
+    let(:pyramid) { Game::Pyramid }
 
     around do |example|
       pyramid.clear!

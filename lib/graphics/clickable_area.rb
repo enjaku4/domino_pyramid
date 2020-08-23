@@ -1,6 +1,6 @@
 module Graphics
   class ClickableArea < Rectangle
-    attr_reader :bone, :x, :y
+    attr_reader :bone
 
     def initialize(bone, x, y)
       @bone = bone
