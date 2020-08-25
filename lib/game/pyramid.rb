@@ -13,5 +13,15 @@ module Game
     def clear!
       rows.clear
     end
+
+    def selected_bones
+      bones.select { |bone| bone.selected? }
+    end
+
+    private
+
+      def bones
+        rows.map { |row| row.bones }.flatten
+      end
   end
 end

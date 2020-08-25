@@ -30,4 +30,10 @@ describe Game::Bone do
       end
     end
   end
+
+  describe '#delete!' do
+    it 'marks the bone as deleted' do
+      expect { bone.delete! }.to change { bone.deleted? }.from(false).to(true)
+    end
+  end
 end

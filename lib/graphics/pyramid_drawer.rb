@@ -8,7 +8,7 @@ module Graphics
         x = initial_x(row)
 
         row.bones.each do |bone|
-          BoneDrawer.new(bone, x, y).run
+          BoneDrawer.new(bone, x, y).run unless bone.deleted?
           x += Store::Settings.bone_width
         end
       end
