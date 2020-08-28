@@ -21,7 +21,7 @@ module Game
     private
 
       def bones
-        rows.map { |row| row.bones }.flatten
+        rows.flat_map { |row| row.bones }
       end
   end
 end
