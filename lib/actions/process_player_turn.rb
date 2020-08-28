@@ -9,9 +9,10 @@ module Actions
 
       clickable_area.bone.toggle_selection!
 
-      process_calculation if selected_bones.count == 2
-
-      selected_bones.each(&:toggle_selection!)
+      if selected_bones.count == 2
+        process_calculation
+        selected_bones.each(&:toggle_selection!)
+      end
 
       Game.refresh
     end
