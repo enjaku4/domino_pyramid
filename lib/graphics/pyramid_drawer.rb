@@ -17,11 +17,11 @@ module Graphics
     private
 
       def initial_x(row)
-        Store::Settings.window_width / 2 - Store::Settings.bone_width / 2 * row.number
+        Store::Settings.window_width / 2 - Store::Settings.bone_width / 2 * (row.number + 1)
       end
 
       def initial_y(row)
-        (row.number - 1) * Store::Settings.bone_height
+        row.number * Store::Settings.bone_height
       end
   end
 end

@@ -7,12 +7,12 @@ module Game
     def self.run
       shuffled_dominoes_values = DOMINOES_VALUES.shuffle
 
-      (1..7).each_with_object(Pyramid) do |row_number, pyramid|
+      (0..6).each_with_object(Pyramid) do |row_number, pyramid|
         row = Row.new(row_number)
 
-        row_number.times do
+        (row_number + 1).times do
           bone = Bone.new(*shuffled_dominoes_values.pop)
-          bone.reveal! if [1,7].include?(row.number)
+          bone.reveal! if [0,6].include?(row.number)
 
           row << bone
         end
