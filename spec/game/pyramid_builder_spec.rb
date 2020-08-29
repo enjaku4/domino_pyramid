@@ -33,7 +33,7 @@ describe Game::PyramidBuilder do
     it 'does not reveal any other bones' do
       subject
 
-      expect((1..5).flat_map { |i| pyramid.rows[i].bones }.map { |bone| bone.revealed? }.uniq).to eq([false])
+      expect(pyramid.rows[1..5].flat_map { |row| row.bones.map { |bone| bone.revealed? } }.uniq ).to eq([false])
     end
 
     it 'builds a pyramid with all the bones from the dominoes set' do

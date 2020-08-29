@@ -1,24 +1,22 @@
 describe Store::ClickableAreas do
   let(:clickable_areas) { described_class.clone }
-  let(:clickable_area) { double }
+  let(:clickable_area) { Graphics::ClickableArea.new(Game::Bone.new(2, 5), 45, 78) }
 
   before { clickable_areas.clear! }
 
   describe '.<<' do
     it 'adds a new clickable area to the colection' do
-      expect(clickable_areas << clickable_area).to match_array([clickable_area])
+      expect { clickable_areas << clickable_area }.to change { clickable_areas.collection }.from([]).to([clickable_area])
     end
   end
 
   describe '.find_clicked' do
     subject { clickable_areas.find_clicked(15, 46) }
 
-    context 'if there is no clicked area in the collection' do
-      before do
-        allow(clickable_area).to receive(:contains?).with(15, 46).and_return(false)
+    before { clickable_areas << clickable_area }
 
-        clickable_areas << clickable_area
-      end
+    context 'if there is no clicked area in the collection' do
+      before { allow(clickable_area).to receive(:contains?).with(15, 46).and_return(false) }
 
       it 'returns nil' do
         expect(subject).to be_nil
@@ -26,11 +24,7 @@ describe Store::ClickableAreas do
     end
 
     context 'if there is a clicked area in the collection' do
-      before do
-        allow(clickable_area).to receive(:contains?).with(15, 46).and_return(true)
-
-        clickable_areas << clickable_area
-      end
+      before { allow(clickable_area).to receive(:contains?).with(15, 46).and_return(true) }
 
       it 'returns it' do
         expect(subject).to eq(clickable_area)
@@ -42,7 +36,7 @@ describe Store::ClickableAreas do
     before { clickable_areas << clickable_area }
 
     it 'clears clickable areas' do
-      expect { clickable_areas.clear! }.to change { clickable_areas.collection }.from([clickable_area]).to([])
+      expect { clickable_areas.clear! }.to change { clickable_areas.collection.any? }.from(true).to(false)
     end
   end
 end

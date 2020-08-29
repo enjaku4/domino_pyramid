@@ -10,8 +10,12 @@ module Store
     end
 
     def method_missing(method_name)
-      data.fetch(method_name)
+      data.fetch(method_name) do
+        raise UnknownSettingError, "unknown setting \'#{method_name}\'"
+      end
     end
+
+    class UnknownSettingError < StandardError; end
 
     private
 
