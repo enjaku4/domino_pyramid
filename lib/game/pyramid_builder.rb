@@ -1,7 +1,7 @@
 module Game
   module PyramidBuilder
-    DOMINOES_VALUES = (0..6).each_with_object([]) do |first_value, dominoes|
-      (first_value..6).map { |second_value| dominoes << [first_value, second_value] }
+    DOMINOES_VALUES = (0..6).each_with_object([]) do |first_value, dominoes_values|
+      (first_value..6).map { |second_value| dominoes_values << [first_value, second_value] }
     end
 
     def self.run
