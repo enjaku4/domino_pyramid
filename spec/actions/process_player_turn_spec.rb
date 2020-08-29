@@ -1,4 +1,6 @@
 describe Actions::ProcessPlayerTurn do
+  before { Game::Pyramid.clear! }
+
   describe '.run' do
     subject { described_class.run(double(x: 3, y: 55)) }
 
@@ -14,9 +16,13 @@ describe Actions::ProcessPlayerTurn do
       context 'if there are 2 selected bones' do
         let(:row) { Game::Row.new(3) }
 
+        let(:bone_1) { Game::Bone.new(2, 5) }
+        let(:bone_2) { Game::Bone.new(0, 5) }
+
         before do
           Store::Settings.set(window_width: 200, window_height: 1900)
 
+          allow(Actions::FindBonesToReveal).to receive(:run).and_return([bone_1, bone_2])
           allow(Store::ClickableAreas).to receive(:find_clicked).with(3, 55).and_return(double(bone: bone_2))
 
           bone_1.toggle_selection!
@@ -28,9 +34,6 @@ describe Actions::ProcessPlayerTurn do
         end
 
         context 'if their summary rank equals 12' do
-          let(:bone_1) { Game::Bone.new(2, 5) }
-          let(:bone_2) { Game::Bone.new(0, 5) }
-
           it 'deletes both bones' do
             expect { subject }.to change { [bone_1.deleted?, bone_2.deleted?] }.from([false, false]).to([true, true])
           end
@@ -41,7 +44,6 @@ describe Actions::ProcessPlayerTurn do
         end
 
         context 'if their summary rank does not equal 12' do
-          let(:bone_1) { Game::Bone.new(2, 5) }
           let(:bone_2) { Game::Bone.new(6, 3) }
 
           it 'does not delete any bones' do
@@ -51,6 +53,10 @@ describe Actions::ProcessPlayerTurn do
           it 'deselects both bones' do
             expect { subject }.to change { [bone_1.selected?, bone_2.selected?] }.from([true, false]).to([false, false])
           end
+        end
+
+        it 'reveals the bones which can be revealed' do
+          expect { subject }.to change { [bone_1, bone_2].map(&:revealed?).uniq }.from([false]).to([true])
         end
       end
     end

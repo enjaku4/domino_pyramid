@@ -20,7 +20,7 @@ describe Game::PyramidBuilder do
       subject
 
       pyramid.rows.each do |row|
-        expect(row.bones.count).to eq(row.number)
+        expect(row.bones.count).to eq(row.number + 1)
       end
     end
 

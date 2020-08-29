@@ -2,7 +2,7 @@ describe Store::ClickableAreas do
   let(:clickable_areas) { described_class.clone }
   let(:clickable_area) { double }
 
-  after { clickable_areas.clear! }
+  before { clickable_areas.clear! }
 
   describe '.<<' do
     it 'adds a new clickable area to the colection' do

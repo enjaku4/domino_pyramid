@@ -10,7 +10,7 @@ module Actions
       clickable_area.bone.toggle_selection!
 
       if selected_bones.count == 2
-        process_calculation
+        apply_rules
         selected_bones.each(&:toggle_selection!)
       end
 
@@ -19,17 +19,21 @@ module Actions
 
     private
 
+      def apply_rules
+        if selected_bones.sum(&:rank) == 12
+          selected_bones.each(&:delete!)
+          bones_to_reveal.each(&:reveal!)
+          # TODO check if lost
+          # TODO check if won
+        end
+      end
+
       def selected_bones
         Game::Pyramid.selected_bones
       end
 
-      def process_calculation
-        if selected_bones.sum(&:rank) == 12
-          selected_bones.each(&:delete!)
-          # TODO reveal bones if possible
-          # TODO check if lost
-          # TODO check if won
-        end
+      def bones_to_reveal
+        Actions::FindBonesToReveal.run
       end
   end
 end

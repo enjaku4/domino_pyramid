@@ -12,7 +12,7 @@ module Game
 
         (row_number + 1).times do
           bone = Bone.new(*shuffled_dominoes_values.pop)
-          bone.reveal! if [0,6].include?(row.number)
+          bone.reveal! if [0, 6].include?(row.number)
 
           row << bone
         end
