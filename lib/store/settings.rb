@@ -1,5 +1,5 @@
 module Store
-  module Store::Settings
+  module Settings
     extend self
 
     def set(window_width:, window_height:)
