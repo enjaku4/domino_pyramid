@@ -28,6 +28,10 @@ describe Store::Settings do
       expect(subject.horizontal_border_width).to eq(2)
     end
 
+    it 'sets font size' do
+      expect(subject.font_size).to eq(25)
+    end
+
     it 'raise an error if there is no such setting' do
       expect { subject.foo }.to raise_error(Store::Settings::UnknownSettingError, "unknown setting \'foo\'")
     end

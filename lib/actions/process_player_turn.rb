@@ -10,7 +10,7 @@ module Actions
       clickable_area.bone.toggle_selection!
 
       if selected_bones.count == 2
-        apply_rules
+        delete_and_reveal_bones_if_possible
         selected_bones.each(&:toggle_selection!)
       end
 
@@ -19,12 +19,10 @@ module Actions
 
     private
 
-      def apply_rules
+      def delete_and_reveal_bones_if_possible
         if selected_bones.sum(&:rank) == 12
           selected_bones.each(&:delete!)
           bones_to_reveal.each(&:reveal!)
-          # TODO check if lost
-          # TODO check if won
         end
       end
 
@@ -33,7 +31,7 @@ module Actions
       end
 
       def bones_to_reveal
-        Actions::FindBonesToReveal.run
+        FindBonesToReveal.run
       end
   end
 end

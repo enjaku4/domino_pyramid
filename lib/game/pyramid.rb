@@ -22,14 +22,16 @@ module Game
       bones.select { |bone| bone.selected? }
     end
 
+    def revealed_bones
+      bones.select { |bone| bone.revealed? && !bone.deleted? }
+    end
+
     def not_revealed_bones
       bones.select { |bone| !bone.revealed? }
     end
 
-    private
-
-      def bones
-        rows.flat_map { |row| row.bones }
-      end
+    def bones
+      rows.flat_map { |row| row.bones }
+    end
   end
 end

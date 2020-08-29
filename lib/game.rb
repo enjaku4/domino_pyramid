@@ -2,11 +2,6 @@ module Game
   extend self
 
   def start
-    PyramidBuilder.run
-    Graphics::PyramidDrawer.run
-  end
-
-  def restart
     Pyramid.clear!
     PyramidBuilder.run
 
@@ -17,5 +12,11 @@ module Game
     Store::ClickableAreas.clear!
     Window.clear
     Graphics::PyramidDrawer.run
+
+    Actions::CheckIfGameFinished.run
+  end
+
+  def finish(status)
+    Graphics::StatusDrawer.run(status)
   end
 end

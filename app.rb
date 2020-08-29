@@ -13,14 +13,12 @@ end
 Window.on(:key_down) do |event|
   case event.key
   when 'return'
-    Game.restart
+    Game.start
   when 'escape'
     Window.close
   end
 end
 
 Game.start
-
-# TODO check if lost
 
 Window.show

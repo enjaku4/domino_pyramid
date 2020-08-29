@@ -30,6 +30,7 @@ module Store
         set_spot_radius
         set_vertical_border_width
         set_horizontal_border_width
+        set_font_size
       end
 
       def set_bone_width
@@ -54,6 +55,10 @@ module Store
 
       def set_horizontal_border_width
         data[:horizontal_border_width] = bone_width / 25
+      end
+
+      def set_font_size
+        data[:font_size] = window_height / 28
       end
   end
 end

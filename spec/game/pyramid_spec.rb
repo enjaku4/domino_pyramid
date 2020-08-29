@@ -73,6 +73,37 @@ describe Game::Pyramid do
     end
   end
 
+  describe '.revealed_bones' do
+    let(:bone) { Game::Bone.new(1, 5) }
+
+    before do
+      bone.reveal!
+
+      row_1 = Game::Row.new(1)
+      row_1 << bone
+
+      revealed_but_deleted_bone = Game::Bone.new(3, 2)
+      revealed_but_deleted_bone.reveal!
+      revealed_but_deleted_bone.delete!
+
+      row_2 = Game::Row.new(2)
+      row_2 << revealed_but_deleted_bone
+
+      not_revealed_bone = Game::Bone.new(5, 0)
+
+      row_3 = Game::Row.new(3)
+      row_3 << not_revealed_bone
+
+      pyramid << row_1
+      pyramid << row_2
+      pyramid << row_3
+    end
+
+    it 'returns revealed but not deleted bones' do
+      expect(pyramid.revealed_bones).to match([bone])
+    end
+  end
+
   describe '.not_revealed_bones' do
     let(:bone_1) { Game::Bone.new(1, 5) }
     let(:bone_2) { Game::Bone.new(2, 5) }
@@ -98,6 +129,26 @@ describe Game::Pyramid do
 
     it 'returns not revealed bones' do
       expect(pyramid.not_revealed_bones).to match([bone_1, bone_2])
+    end
+  end
+
+  describe '.bones' do
+    let(:bone_1) { Game::Bone.new(1, 5) }
+    let(:bone_2) { Game::Bone.new(2, 5) }
+
+    before do
+      row_1 = Game::Row.new(1)
+      row_1 << bone_1
+
+      row_2 = Game::Row.new(2)
+      row_2 << bone_2
+
+      pyramid << row_1
+      pyramid << row_2
+    end
+
+    it 'returns all the bones in pyramid' do
+      expect(pyramid.bones).to match([bone_1, bone_2])
     end
   end
 end

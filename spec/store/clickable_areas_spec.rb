@@ -2,7 +2,11 @@ describe Store::ClickableAreas do
   let(:clickable_areas) { described_class.clone }
   let(:clickable_area) { Graphics::ClickableArea.new(Game::Bone.new(2, 5), 45, 78) }
 
-  before { clickable_areas.clear! }
+  before do
+    Store::Settings.set(window_width: 350.0, window_height: 700.0)
+
+    clickable_areas.clear!
+  end
 
   describe '.<<' do
     it 'adds a new clickable area to the colection' do

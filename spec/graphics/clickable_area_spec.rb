@@ -1,7 +1,11 @@
 describe Graphics::ClickableArea do
   subject { described_class.new(Game::Bone.new(4, 5), 27, 35) }
 
-  before { Store::ClickableAreas.clear! }
+  before do
+    Store::Settings.set(window_width: 300, window_height: 600)
+
+    Store::ClickableAreas.clear!
+  end
 
   it 'is inherits from Window::Rectangle class' do
     expect(subject).to be_a(Window::Rectangle)
