@@ -36,13 +36,13 @@ describe Game::PyramidBuilder do
       expect(pyramid.rows[1..5].flat_map { |row| row.bones.map { |bone| bone.revealed? } }.uniq ).to eq([false])
     end
 
-    it 'builds a pyramid with all the bones from the dominoes set' do
+    it 'builds a pyramid with all the bones from the domino set' do
       subject
 
-      dominoes_values = described_class::DOMINOES_VALUES
-      pyramid.rows.each { |row| dominoes_values -= row.bones.map { |bone| [bone.first_value, bone.second_value] } }
+      domino_values = described_class::DOMINO_VALUES
+      pyramid.rows.each { |row| domino_values -= row.bones.map { |bone| [bone.first_value, bone.second_value] } }
 
-      expect(dominoes_values).to be_empty
+      expect(domino_values).to be_empty
     end
   end
 end
