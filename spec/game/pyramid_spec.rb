@@ -74,25 +74,26 @@ describe Game::Pyramid do
   end
 
   describe '.revealed_bones' do
-    let(:bone) { Game::Bone.new(1, 5) }
+    let(:bone_1) { Game::Bone.new(1, 5) }
 
     before do
-      bone.reveal!
-
       row_1 = Game::Row.new(1)
-      row_1 << bone
+      row_1 << bone_1
 
-      revealed_but_deleted_bone = Game::Bone.new(3, 2)
-      revealed_but_deleted_bone.reveal!
-      revealed_but_deleted_bone.delete!
+      bone_1.reveal!
+
+      bone_2 = Game::Bone.new(3, 2)
 
       row_2 = Game::Row.new(2)
-      row_2 << revealed_but_deleted_bone
+      row_2 << bone_2
 
-      not_revealed_bone = Game::Bone.new(5, 0)
+      bone_2.reveal!
+      bone_2.delete!
+
+      bone_3 = Game::Bone.new(5, 0)
 
       row_3 = Game::Row.new(3)
-      row_3 << not_revealed_bone
+      row_3 << bone_3
 
       pyramid << row_1
       pyramid << row_2
@@ -100,7 +101,7 @@ describe Game::Pyramid do
     end
 
     it 'returns revealed but not deleted bones' do
-      expect(pyramid.revealed_bones).to match([bone])
+      expect(pyramid.revealed_bones).to match([bone_1])
     end
   end
 

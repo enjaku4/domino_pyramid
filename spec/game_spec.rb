@@ -22,7 +22,7 @@ describe Game do
 
   describe '.finish' do
     it 'draws the game status' do
-      expect(Graphics::StatusDrawer).to receive(:run).with(:foo)
+      expect(Graphics::MessageDrawer).to receive(:run).with(:foo)
       Game.finish(:foo)
     end
   end

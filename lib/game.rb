@@ -17,6 +17,6 @@ module Game
   end
 
   def finish(status)
-    Graphics::StatusDrawer.run(status)
+    Graphics::MessageDrawer.run(status)
   end
 end
