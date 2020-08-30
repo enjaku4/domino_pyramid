@@ -1,6 +1,7 @@
 require 'ruby2d'
+require 'require_all'
 
-Dir["#{File.dirname(__FILE__)}/../lib/**/*.rb"].each { |f| load(f) }
+require_rel '../lib'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
