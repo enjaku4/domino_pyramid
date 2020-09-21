@@ -14,4 +14,4 @@ the player wins. If there are no pairs among the revealed bones which total rank
 - To start a new game press **return**.
 - To exit press **escape**.
 
-![Screenshot 2020-09-15 at 02 01 12](https://user-images.githubusercontent.com/32835381/93147000-f3279000-f6f8-11ea-9cb6-4eeb6d6e56bc.png)
+![Screenshot 2020-09-21 at 02 01 12](https://user-images.githubusercontent.com/32835381/93760427-a8d07280-fc14-11ea-8e10-2d36934e2e77.png)
