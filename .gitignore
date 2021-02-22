@@ -1,4 +1,6 @@
 .tags
+.tags_swap
+.ctags
 .DS_store
 .byebug_history
 
