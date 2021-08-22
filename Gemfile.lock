@@ -17,7 +17,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.3)
-    ruby2d (0.9.5)
+    ruby2d (0.10.0)
 
 PLATFORMS
   ruby
