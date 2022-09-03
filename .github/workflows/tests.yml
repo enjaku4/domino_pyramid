@@ -4,14 +4,12 @@ on: [push]
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     env:
       BUNDLE_WITHOUT: development
 
     steps:
-      - run: sudo apt install -y xfce4 libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev libsdl2-ttf-dev
-
       - uses: actions/checkout@v3
 
       - uses: ruby/setup-ruby@v1
