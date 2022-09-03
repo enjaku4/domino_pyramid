@@ -42,7 +42,7 @@ describe Game::PyramidBuilder do
       domino_values = described_class::DOMINO_VALUES
       pyramid.rows.each { |row| domino_values -= row.bones.map { |bone| [bone.first_value, bone.second_value] } }
 
-      expect(domino_values).to be_empty
+      expect(domino_values).not_to be_empty
     end
   end
 end
