@@ -1,7 +1,6 @@
 require 'ruby2d'
-require 'require_all'
 
-require_rel 'lib'
+Dir["#{File.dirname(__FILE__)}/lib/**/*.rb"].each { |f| load(f) }
 
 Store::Settings.set(window_width: 350.0, window_height: 700.0)
 
