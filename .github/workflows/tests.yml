@@ -14,4 +14,5 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.2'
+          bundler-cache: true
       - run: bundle exec rspec
