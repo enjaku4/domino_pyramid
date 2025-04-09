@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   tests:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     env:
       BUNDLE_WITHOUT: development
@@ -14,5 +14,4 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.4.2'
-      - run: brew install
       - run: bundle exec rspec
