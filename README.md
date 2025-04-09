@@ -1,7 +1,7 @@
 # Domino Pyramid
 A simple single-player domino game built with [ruby2d](https://github.com/ruby2d/ruby2d) gem.
 
-To launch the game install `ruby2d` gem and run `ruby main.rb`.
+To launch the game, run 'bundle' to install `ruby2d` gem, then run `ruby main.rb`.
 
 ## Rules
 Domino tiles are laid out in a pyramid, face down, except for the first and last rows which are revealed.
