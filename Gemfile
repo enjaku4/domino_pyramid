@@ -10,4 +10,5 @@ end
 
 group :development do
   gem 'byebug'
+  gem 'rake'
 end
