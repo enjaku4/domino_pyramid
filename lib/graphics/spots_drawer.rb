@@ -7,41 +7,21 @@ module Graphics
     end
 
     def run
-      case @value
-      when 1
-        draw_spot(middle_x, middle_y)
-      when 2
-        draw_spot(left, top)
-        draw_spot(right, bottom)
-      when 3
-        draw_spot(left, top)
-        draw_spot(middle_x, middle_y)
-        draw_spot(right, bottom)
-      when 4
-        draw_spot(left, top)
-        draw_spot(left, bottom)
-        draw_spot(right, top)
-        draw_spot(right, bottom)
-      when 5
-        draw_spot(left, top)
-        draw_spot(left, bottom)
-        draw_spot(middle_x, middle_y)
-        draw_spot(right, top)
-        draw_spot(right, bottom)
-      when 6
-        draw_spot(left, top)
-        draw_spot(left, middle_y)
-        draw_spot(left, bottom)
-        draw_spot(right, top)
-        draw_spot(right, middle_y)
-        draw_spot(right, bottom)
-      end
+      positions.map { |x, y| Circle.new(x: x, y: y, radius: Store::Settings.spot_radius, color: 'navy', z: 2) }
     end
 
     private
 
-      def draw_spot(x, y)
-        Circle.new(x: x, y: y, radius: Store::Settings.spot_radius, color: 'navy', z: 2)
+      def positions
+        case @value
+        when 0 then []
+        when 1 then [[middle_x, middle_y]]
+        when 2 then [[left, top], [right, bottom]]
+        when 3 then [[left, top], [middle_x, middle_y], [right, bottom]]
+        when 4 then [[left, top], [left, bottom], [right, top], [right, bottom]]
+        when 5 then [[left, top], [left, bottom], [middle_x, middle_y], [right, top], [right, bottom]]
+        when 6 then [[left, top], [left, middle_y], [left, bottom], [right, top], [right, middle_y], [right, bottom]]
+        end
       end
 
       def left

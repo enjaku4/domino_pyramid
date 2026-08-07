@@ -4,13 +4,13 @@ module Game
   def start
     Pyramid.clear!
     PyramidBuilder.run
+    Graphics::PyramidView.build
 
     refresh
   end
 
   def refresh
-    Window.clear
-    Graphics::PyramidDrawer.run
+    Graphics::PyramidView.refresh
 
     Actions::CheckIfGameFinished.run
 
