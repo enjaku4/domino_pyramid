@@ -3,8 +3,8 @@ describe Graphics::ClickableArea do
 
   before { Store::Settings.set(window_width: 300, window_height: 600) }
 
-  it 'is inherits from Window::Rectangle class' do
-    expect(subject).to be_a(Window::Rectangle)
+  it 'is inherits from Window::Button class' do
+    expect(subject).to be_a(Window::Button)
   end
 
   it 'exposes the bone' do
