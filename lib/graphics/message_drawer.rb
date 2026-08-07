@@ -13,12 +13,7 @@ module Graphics
 
       message = draw_message(text, color)
 
-      @objects = [
-        message,
-        draw_backdrop(message),
-        draw_button('New game', left_button_x) { Game.start },
-        draw_button('Quit', right_button_x) { Window.close }
-      ]
+      @objects = [message, draw_backdrop(message), *draw_buttons]
     end
 
     class UnknownStatusError < StandardError;end
@@ -44,6 +39,17 @@ module Graphics
         )
       end
 
+      def draw_buttons
+        buttons = [['New game', proc { Game.start }]]
+        buttons << ['Quit', proc { Window.close }] unless Ruby2D.web?
+
+        x = first_button_x(buttons.size)
+
+        buttons.map do |label, action|
+          draw_button(label, x, &action).tap { x += button_width + button_gap }
+        end
+      end
+
       def draw_button(label, x, &action)
         button = Button.new(
           x: x, y: buttons_y, z: 3,
@@ -60,12 +66,8 @@ module Graphics
         button
       end
 
-      def left_button_x
-        (Store::Settings.window_width - 2 * button_width - button_gap) / 2
-      end
-
-      def right_button_x
-        left_button_x + button_width + button_gap
+      def first_button_x(count)
+        (Store::Settings.window_width - count * button_width - (count - 1) * button_gap) / 2
       end
 
       def buttons_y
