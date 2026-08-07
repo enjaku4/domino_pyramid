@@ -20,10 +20,10 @@ module Graphics
     private
 
       def draw_borders
-        Line.new(x1: @x, y1: @y, x2: right, y2: @y, width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
-        Line.new(x1: @x, y1: bottom, x2: right, y2: bottom, width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
-        Line.new(x1: @x, y1: @y, x2: @x, y2: bottom, width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
-        Line.new(x1: right, y1: @y, x2: right, y2: bottom, width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
+        Line.new(x1: @x, y1: @y, x2: right, y2: @y, stroke_width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
+        Line.new(x1: @x, y1: bottom, x2: right, y2: bottom, stroke_width: Store::Settings.horizontal_border_width, color: 'navy', z: 2)
+        Line.new(x1: @x, y1: @y, x2: @x, y2: bottom, stroke_width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
+        Line.new(x1: right, y1: @y, x2: right, y2: bottom, stroke_width: Store::Settings.vertical_border_width, color: 'navy', z: 2)
       end
 
       def draw_backside
@@ -34,7 +34,7 @@ module Graphics
         SpotsDrawer.new(@bone.first_value, @x, @y).run
         SpotsDrawer.new(@bone.second_value, @x, middle_y).run
 
-        Line.new(x1: @x, y1: middle_y, x2: right, y2: middle_y, width: Store::Settings.divider_size, color: 'navy', z: 2)
+        Line.new(x1: @x, y1: middle_y, x2: right, y2: middle_y, stroke_width: Store::Settings.divider_size, color: 'navy', z: 2)
       end
 
       def create_clickable_area

@@ -4,14 +4,13 @@ module Graphics
 
     def initialize(bone, x, y)
       @bone = bone
-      @x = x
-      @y = y
-      @z = 1
-      @width = Store::Settings.bone_width
-      @height = Store::Settings.bone_height
-      self.color = @bone.selected? ? 'yellow' : 'aqua'
-      update_coords(@x, @y, @width, @height)
-      add
+
+      super(
+        x: x, y: y, z: 1,
+        width: Store::Settings.bone_width,
+        height: Store::Settings.bone_height,
+        color: bone.selected? ? 'yellow' : 'aqua'
+      )
     end
 
     def store
