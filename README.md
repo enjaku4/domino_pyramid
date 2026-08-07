@@ -17,4 +17,4 @@ You win by clearing the entire pyramid. If no two face-up bones add up to 12, yo
 ## Native app
 Run `rake build` to compile a standalone executable.
 
-[![Screenshot 2020-09-21 at 02 01 12](https://user-images.githubusercontent.com/32835381/93760427-a8d07280-fc14-11ea-8e10-2d36934e2e77.png)](https://enjaku4.github.io/domino_pyramid/)
+[![Domino Pyramid](screenshot.png)](https://enjaku4.github.io/domino_pyramid/)
