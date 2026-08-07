@@ -5,7 +5,7 @@ A simple single-player domino game built with [ruby2d](https://github.com/ruby2d
 
 To launch the game install the `ruby2d` gem, then run `ruby main.rb`.
 
-Run rake build to compile a standalone executable.
+Run `rake build` to compile a standalone executable.
 
 ## Rules
 The 28 tiles of a double-six domino set — *bones* — are laid out in a seven-row pyramid, face down, except for the top and bottom rows, which start face up.
