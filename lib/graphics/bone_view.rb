@@ -14,7 +14,7 @@ module Graphics
       @frontside.each { |object| object.visible = revealed? }
 
       if revealed?
-        @clickable_area.color = @bone.selected? ? 'yellow' : 'aqua'
+        @clickable_area.repaint
         @clickable_area.add
       else
         @clickable_area.remove
