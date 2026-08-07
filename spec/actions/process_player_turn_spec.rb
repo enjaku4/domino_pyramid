@@ -1,6 +1,4 @@
 describe Actions::ProcessPlayerTurn do
-  before { Game::Pyramid.clear! }
-
   describe '.run' do
     subject { described_class.run(double(x: 3, y: 55)) }
 

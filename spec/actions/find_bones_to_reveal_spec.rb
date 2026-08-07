@@ -5,8 +5,6 @@ describe Actions::FindBonesToReveal do
     (1..6).each { |number| let(:"bone_#{number}") { Game::Bone.new(0, number) } }
 
     before do
-      Game::Pyramid.clear!
-
       row_1 = Game::Row.new(0)
       row_1 << bone_1
       bone_1.reveal!
