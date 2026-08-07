@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Domino Pyramid</title>
+    <style>
+      html, body {
+        margin: 0;
+        background-color: #111;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        min-height: 100vh;
+        padding: 16px;
+        box-sizing: border-box;
+        font-family: system-ui, sans-serif;
+        color: #888;
+      }
+
+      #canvas {
+        display: block;
+        flex: none;
+      }
+
+      aside {
+        max-width: 280px;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        color: #ddd;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      a {
+        color: #7FDBFF;
+      }
+
+      @media (max-width: 720px) {
+        body {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        aside {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" oncontextmenu="event.preventDefault()"></canvas>
+
+    <aside>
+      <h1>Domino Pyramid</h1>
+      <p>A single-player domino game. Clear the pyramid by removing pairs of bones whose pips add up to 12.</p>
+      <p>
+        By <a href="https://github.com/enjaku4">enjaku4</a><br>
+        <a href="https://github.com/enjaku4/domino_pyramid">Source on GitHub</a><br>
+        Built with <a href="https://www.ruby2d.com">Ruby 2D</a>
+      </p>
+    </aside>
+
+    <script>
+      var Module = {
+        canvas: document.getElementById('canvas'),
+        print: function (text) { console.log(text); },
+        printErr: function (text) { console.error(text); }
+      };
+    </script>
+    <script async src="app.js"></script>
+  </body>
+</html>
