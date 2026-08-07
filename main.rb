@@ -8,11 +8,8 @@ Window.set(
   width: Store::Settings.window_width,
   height: Store::Settings.window_height,
   title: 'Domino Pyramid',
-  close_on_esc: true,
   render_mode: :on_demand
 )
-
-Window.on(key_down: :return) { Game.start }
 
 Game.start
 
