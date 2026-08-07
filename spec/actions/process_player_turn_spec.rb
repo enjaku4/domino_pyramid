@@ -1,15 +1,12 @@
 describe Actions::ProcessPlayerTurn do
   describe '.run' do
-    subject { described_class.run(double(x: 3, y: 55)) }
+    subject { described_class.run(clickable_area) }
 
     context 'if a clickable area was clicked' do
       let(:bone) { Game::Bone.new(2, 3) }
+      let(:clickable_area) { instance_double(Graphics::ClickableArea, bone: bone) }
 
-      before do
-        Store::Settings.set(window_width: 200, window_height: 1900)
-
-        allow(Store::ClickableAreas).to receive(:find_clicked).with(3, 55).and_return(Graphics::ClickableArea.new(bone, 13, 65))
-      end
+      before { Store::Settings.set(window_width: 200, window_height: 1900) }
 
       it 'toggles bone selection' do
         expect { subject }.to change { bone.selected? }.from(false).to(true)
@@ -76,20 +73,6 @@ describe Actions::ProcessPlayerTurn do
           it_behaves_like 'bones selection toggler'
           it_behaves_like 'game refresher'
         end
-      end
-    end
-
-    context 'if a clickable area was not clicked' do
-      before { allow(Store::ClickableAreas).to receive(:find_clicked).with(3, 55).and_return(nil) }
-
-      it 'doen not toggle any bones selection' do
-        expect_any_instance_of(Game::Bone).not_to receive(:toggle_selection!)
-        subject
-      end
-
-      it 'doen not refresh the game' do
-        expect(Game).not_to receive(:refresh)
-        subject
       end
     end
   end

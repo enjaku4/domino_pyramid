@@ -11,11 +11,11 @@ describe Game do
   end
 
   describe '.refresh' do
-    it 'clears the ClickableAreas store and Window, then redrawes the pyramid and check if the game is finished' do
-      expect(Store::ClickableAreas).to receive(:clear!).ordered
+    it 'clears the Window, then redrawes the pyramid, checks if the game is finished and requests a render' do
       expect(Window).to receive(:clear).ordered
       expect(Graphics::PyramidDrawer).to receive(:run).ordered
       expect(Actions::CheckIfGameFinished).to receive(:run).ordered
+      expect(Window.current).to receive(:request_render).ordered
       Game.refresh
     end
   end

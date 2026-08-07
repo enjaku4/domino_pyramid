@@ -15,11 +15,15 @@ module Graphics
     private
 
       def draw_you_win_message
-        Text.new('You win', size: Store::Settings.font_size, color: 'green')
+        draw_message('You win', 'green')
       end
 
       def draw_you_lose_message
-        Text.new('You lose', size: Store::Settings.font_size, color: 'red')
+        draw_message('You lose', 'red')
+      end
+
+      def draw_message(text, color)
+        Text.new(text, x: :center, y: :center, z: 3, style: :bold, size: Store::Settings.font_size, color: color)
       end
   end
 end

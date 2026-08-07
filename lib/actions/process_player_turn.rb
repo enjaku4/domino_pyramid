@@ -2,11 +2,7 @@ module Actions
   module ProcessPlayerTurn
     extend self
 
-    def run(event)
-      clickable_area = Store::ClickableAreas.find_clicked(event.x, event.y)
-
-      return unless clickable_area
-
+    def run(clickable_area)
       clickable_area.bone.toggle_selection!
 
       if selected_bones.count == 2

@@ -9,11 +9,12 @@ module Game
   end
 
   def refresh
-    Store::ClickableAreas.clear!
     Window.clear
     Graphics::PyramidDrawer.run
 
     Actions::CheckIfGameFinished.run
+
+    Window.current.request_render
   end
 
   def finish(status)
