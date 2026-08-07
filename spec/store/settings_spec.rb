@@ -20,12 +20,8 @@ describe Store::Settings do
       expect(subject.spot_radius).to eq(4)
     end
 
-    it 'sets vertical border width' do
-      expect(subject.vertical_border_width).to eq(2)
-    end
-
-    it 'sets horizontal border width' do
-      expect(subject.horizontal_border_width).to eq(2)
+    it 'sets border width' do
+      expect(subject.border_width).to eq(2)
     end
 
     it 'sets font size' do

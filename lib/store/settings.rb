@@ -28,8 +28,7 @@ module Store
         set_bone_height
         set_divider_size
         set_spot_radius
-        set_vertical_border_width
-        set_horizontal_border_width
+        set_border_width
         set_font_size
       end
 
@@ -49,12 +48,8 @@ module Store
         data[:spot_radius] = bone_height / 25
       end
 
-      def set_vertical_border_width
-        data[:vertical_border_width] = bone_height / 50
-      end
-
-      def set_horizontal_border_width
-        data[:horizontal_border_width] = bone_width / 25
+      def set_border_width
+        data[:border_width] = bone_height / 50
       end
 
       def set_font_size

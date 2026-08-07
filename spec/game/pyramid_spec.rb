@@ -1,8 +1,6 @@
 describe Game::Pyramid do
   let(:pyramid) { described_class.clone }
 
-  after { pyramid.clear! }
-
   describe '.clear!' do
     before { pyramid << Game::Row.new(4) }
 
